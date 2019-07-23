@@ -15,7 +15,7 @@ class Parser
   def call # rubocop:disable Metrics/MethodLength
     out = {}
 
-    sections(doc).each do |nodes|
+    sections.each do |nodes|
       next unless handable?(starting = nodes.shift)
 
       handler = starting.first_child.string_content.strip.downcase.to_sym
@@ -49,7 +49,7 @@ class Parser
     node.type == :header && node.header_level == 2
   end
 
-  def sections(doc)
+  def sections
     doc.slice_before { |node| handable?(node) }
   end
 
