@@ -1,0 +1,12 @@
+{
+  "phrases": [
+    {
+      "phrase": "Bump *API* version to *1.0*",
+      "clues": [
+        "bump",
+        "update",
+        "release"
+      ]
+    }
+  ]
+}
