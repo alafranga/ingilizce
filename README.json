@@ -1,26 +1,28 @@
-[
-  {
-    "phrase": "foo bar baz",
-    "clues": [
-      "hmm",
-      "clue",
-      "ok"
-    ]
-  },
-  {
-    "phrase": "foo bar baz",
-    "clues": [
-      "hmm",
-      "clue",
-      "ok"
-    ]
-  },
-  {
-    "phrase": "foo bar baz",
-    "clues": [
-      "hmm",
-      "clue",
-      "ok"
-    ]
-  }
-]
+{
+  "phrases": [
+    {
+      "phrase": "foo bar baz",
+      "clues": [
+        "hmm",
+        "clue",
+        "ok"
+      ]
+    },
+    {
+      "phrase": "foo bar baz",
+      "clues": [
+        "hmm",
+        "clue",
+        "ok"
+      ]
+    },
+    {
+      "phrase": "foo bar baz",
+      "clues": [
+        "hmm",
+        "clue",
+        "ok"
+      ]
+    }
+  ]
+}
