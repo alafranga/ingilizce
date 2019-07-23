@@ -80,7 +80,5 @@ rule '.json' => '.md' do |task|
   warn "#{task.name} generated."
 end
 
-desc 'Create phrases json data from markdown source'
-task phrases: ['README.json']
-
-task default: %i[phrases]
+desc 'Create json data from markdown source'
+task default: ['README.json']
