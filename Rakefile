@@ -75,7 +75,7 @@ class Parser
   include Handler
 end
 
-rule '.json' => '.md' do |task|
+rule '.json' => ['.md', __FILE__] do |task|
   File.write(task.name, Parser.call(File.read(task.source)))
   warn "#{task.name} generated."
 end
