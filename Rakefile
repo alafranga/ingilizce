@@ -75,9 +75,12 @@ class Parser
   include Handler
 end
 
-desc 'Create phrases json data from markdown source'
-task :phrases do
-  File.write('README.json', Parser.call(File.read('README.md')))
+rule '.json' => '.md' do |task|
+  File.write(task.name, Parser.call(File.read(task.source)))
+  warn "#{task.name} generated."
 end
+
+desc 'Create phrases json data from markdown source'
+task phrases: ['README.json']
 
 task default: %i[phrases]
