@@ -1,0 +1,6 @@
+/.bundle
+/vendor/*
+/node_modules
+.vagrant*/
+.env
+.envrc

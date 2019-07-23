@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'commonmarker'
+require 'json'
+
+def paragraph_text(node)
+  abort 'Paragraph expected' unless (paragraph = node.first_child).type == :paragraph
+  abort 'Text expected' unless (text = paragraph.first_child).type == :text
+
+  text.string_content
+end
+
+def parse(doc) # rubocop:disable Metrics/MethodLength
+  out = nil
+
+  doc.walk do |node|
+    case node.type
+    when :document
+      out = [{}]
+    when :blockquote
+      out.last[:phrase] = paragraph_text(node)
+    when :list
+      out.last[:clues] = node.map { |item| paragraph_text(item) }
+    when :hrule
+      out << {}
+    end
+  end
+
+  out
+end
+
+def main
+  puts JSON.pretty_generate parse(CommonMarker.render_doc(ARGF.read, :DEFAULT))
+end
+
+main
