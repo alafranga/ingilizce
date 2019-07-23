@@ -6,5 +6,4 @@ ruby '>=2.5'
 group :development, :test do
   gem 'commonmarker'
   gem 'rubocop'
-  gem 'rubocop-performance'
 end
