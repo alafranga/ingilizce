@@ -3,7 +3,7 @@
     {
       "phrase": "Bump API version to *1.0*",
       "clues": [
-        "bump *foo*",
+        "bump",
         "update",
         "release"
       ]

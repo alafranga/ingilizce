@@ -18,6 +18,6 @@ Example:
 
 > Bump API version to *1.0*
 
-- bump *foo*
+- bump
 - update
 - release
