@@ -1,0 +1,39 @@
+language: ruby
+
+rvm:
+  - 2.6.3
+
+cache:
+  directories:
+    - "$HOME/bundle"
+    - "$HOME/.bundle_config"
+    - "$HOME/node_modules"
+
+bundler_args: "--jobs 3 --retry 3"
+install:
+  - travis_retry gem install bundler
+  - bundle install --path $HOME/bundle --without development
+  - yarn install
+
+jobs:
+  include:
+    - stage: markdownlint
+      name: Run markdownlint checks
+      before_script: skip
+      script: yarn exec markdownlint README.md
+
+    - stage: out-file
+      name: Out file should always be up to date
+      before_script: skip
+      script: bundle exec rake && git diff --quiet --exit-code README.json
+
+notifications:
+  email: false
+  slack:
+    on_success: change
+    on_failure: change
+    secure: Xzn/Qr3bruaoRG8711gsavAQHD3tO9XJwMh5Y6mSSTEDP28empP0f8yeTePc9fz3ZQZCryyyQIO+ff8iVRYPStYLlQ/2fFYOG9MxRMUkbEDG1/fvU+ZBQ+pP8j6fFQaU/i0dVuTC1GwkrvqS5sqtGYxrlhj6LyM5HgZVowPMsb5NM9FwhQ8P/ycqDsEKKW7AiaQBn1PBnLUL73X5nBd/bBoiW+U40y9X/dJxhlws4nexcQmBF/jOzc0Ygb/AFh9jxFD8eZpk9MzS68yyaarrxwQU28a4+T0hMmES2Ik6ur8g2vEw9J0g497FxM969PNtk1NvuTezVO5D6gm4UVrvgLvREsc2owI/8ImMMJ+5+ioZ4/BDU9wBgFL8vyTFU9lIqkDbNQEeFldyYjyQFvUHYuX5rPr+isaqBgM9IIPGOO8DLaOjYOlvfhvI6piqdn4o1ayPfn0A0bphGTlf+rBF0i2yJ+ZQHeaUMSxttV+FB+XDQUzriHgolWTgAr2NmgTITBj+Do+o0FmB74tCJn+zS7MnyaF/8jOzhNCFGrFx6NdcqQyHejOPDOX4iFlPdNd6K4CNSEqjz20Csn2jwwhTr1SAp6e9H4zgLiSJp6wqqzRswvrz8ew67cAEJrCjxDGjM/miEUSaeTZ1ydz22lYNvW9CIFXSCXHE0p9zsFJBMso=
+    template:
+      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch}"
+      - "by %{author} %{result} in %{elapsed_time}"
+
