@@ -1,27 +1,11 @@
 {
   "phrases": [
     {
-      "phrase": "foo bar baz",
+      "phrase": "Bump API version to *1.0*",
       "clues": [
-        "hmm",
-        "clue",
-        "ok"
-      ]
-    },
-    {
-      "phrase": "foo bar baz",
-      "clues": [
-        "hmm",
-        "clue",
-        "ok"
-      ]
-    },
-    {
-      "phrase": "foo bar baz",
-      "clues": [
-        "hmm",
-        "clue",
-        "ok"
+        "bump *foo*",
+        "update",
+        "release"
       ]
     }
   ]
