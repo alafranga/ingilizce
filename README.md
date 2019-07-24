@@ -1,29 +1,23 @@
 English
 =======
 
-Ok sdfds fsd
+English phrases, idioms and words that may be useful for non-native English developers in various development activities
+(e.g. Git commits, identifiers, code comments).
 
 Phrases
 -------
 
-> foo bar baz
+Example:
 
-- hmm
-- clue
-- ok
+```markdown
+> Phrase in block quotation format (use italics for placeholder words)
 
----
+- Reminder words (clues) for accessing this phrase
+- Another set of reminder words for accessing this phrase
+```
 
-> foo bar baz
+> Bump API version to *1.0*
 
-- hmm
-- clue
-- ok
-
----
-
-> foo bar baz
-
-- hmm
-- clue
-- ok
+- bump *foo*
+- update
+- release
