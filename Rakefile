@@ -5,7 +5,7 @@ require 'json'
 
 class Parser
   def self.call(content)
-    JSON.pretty_generate new(content).call
+    JSON.pretty_generate(new(content).call).chomp + "\n"
   end
 
   def initialize(content)
@@ -45,6 +45,10 @@ class Parser
     text.string_content
   end
 
+  def string(node)
+    node.first_child.to_commonmark&.chomp
+  end
+
   def handable?(node)
     node.type == :header && node.header_level == 2
   end
@@ -60,9 +64,9 @@ class Parser
       nodes.each do |node|
         case node.type
         when :blockquote
-          out.last[:phrase] = paragraph_text(node)
+          out.last[:phrase] = string(node)
         when :list
-          out.last[:clues] = node.map { |item| paragraph_text(item) }
+          out.last[:clues] = node.map { |item| string(item) }
         when :hrule
           out << {}
         end
