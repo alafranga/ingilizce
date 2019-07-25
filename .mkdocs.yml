@@ -1,7 +1,7 @@
 site_name: 'English for Developers'
 site_description: 'English phrases, idioms and words for non-native English developers'
 repo_name: omu/english
-repo_url: https://github.com/omu/english/tree/develop
+repo_url: https://github.com/omu/english
 copyright: 'Content on this site is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC Attribution-ShareAlike 3.0 Unported</a> license.'
 docs_dir: docs
 markdown_extensions:
